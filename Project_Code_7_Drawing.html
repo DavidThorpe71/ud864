@@ -186,6 +186,8 @@
 
         var largeInfowindow = new google.maps.InfoWindow();
 
+        
+
         // Initialize the drawing manager.
         var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.POLYGON,
@@ -366,12 +368,17 @@
             markers[i].setMap(null);
           }
         }
+        var area = google.maps.geometry.spherical.computeArea(polygon.getPath());
+      	window.alert(area+" SQUARE METRES");
       }
+
+      
+
     </script>
 
     <script async defer
         src=
-        "https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=MYAPIKEY&v=3&callback=initMap">
+        "https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyAOkdpYuKN5jZWQlaTyRbC1KNgOxtV29yo&v=3&callback=initMap">
     </script>
 
   </body>
