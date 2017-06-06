@@ -413,12 +413,45 @@
               }
             });
         }
+        var origin1 = '4800 El Camino Real, Los Altos, CA'
+var destinationA = '2465 Lathem, Street, Mountain View, CA';
+
+var service = new google.maps.DistanceMatrixService();
+service.getDistanceMatrix(
+  {
+    origins: [origin1],
+    destinations: [destinationA],
+    travelMode: 'BICYCLING', 
+    unitSystem: google.maps.UnitSystem.IMPERIAL,
+    avoidHighways: true,
+  }, callback);
+
+function callback(response, status) {
+  if (status == 'OK') {
+    var origins = response.originAddresses;
+    var destinations = response.destinationAddresses;
+
+    for (var i = 0; i < origins.length; i++) {
+      var results = response.rows[i].elements;
+      for (var j = 0; j < results.length; j++) {
+        var element = results[j];
+        var distance = element.distance.text;
+        var duration = element.duration.text;
+        var from = origins[i];
+        var to = destinations[j];
+      }
+    }
+  }
+}
+
+console.log(distance);
+console.log(duration);
       }
     </script>
 
     <script async defer
         src=
-        "https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=MYAPIKEY&v=3&callback=initMap">
+        "https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyAOkdpYuKN5jZWQlaTyRbC1KNgOxtV29yo&v=3&callback=initMap">
     </script>
 
   </body>
